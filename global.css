@@ -52,13 +52,28 @@ body {
 /* ---------- Lab 1: The Film Strip ---------- */
 /* YOUR CODE: Lab 1, the window and the spin */
 
+@keyframes spin {
+  from {
+    transform: translateX(0%);
+  }
+
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.coin-window {
+  width: 64px;
+  height: 64px;
+  border: 1px red dashed;
+  overflow: hidden;
+}
+
+.coin-window img {
+  animation: 0.8s steps(8) infinite spin;
+}
 
 /* ---------- Lab 2: Byte Walks ---------- */
-.robot-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space);
-}
 
 /* Each window is a button, so the keyboard can reach it */
 .robot-window {
@@ -70,7 +85,78 @@ body {
 }
 
 /* YOUR CODE: Lab 2, the windows and four directions */
+@keyframes walk-down {
+  from {
+    transform: translate(0, 0);
+  }
 
+  to {
+    transform: translateX(-100%, 0);
+  }
+}
+
+@keyframes walk-left {
+  from {
+    transform: translate(0, -25%);
+  }
+
+  to {
+    transform: translateX(-100%, -25%);
+  }
+}
+
+@keyframes walk-right {
+  from {
+    transform: translate(0, -50%);
+  }
+
+  to {
+    transform: translateX(-100%, -50%);
+  }
+}
+
+@keyframes walk-down {
+  from {
+    transform: translate(0, 0);
+  }
+
+  to {
+    transform: translateX(-100%, -75%);
+  }
+}
+
+.robot-window {
+  height: 128px;
+  width: 128px;
+  overflow: hidden;
+}
+
+.robot-window:focus-visible {
+  outline: 3px solid var(--triadic-color);
+}
+
+.robot-window .robot-sheet {
+  animation-duration: 0.8s;
+  animation-timing-function: steps(8);
+  animation-iteration-count: infinite;
+  animation-play-state: paused;
+}
+
+.walk-down .robot-sheet {
+  animation-name: walk-down;
+}
+
+.walk-left .robot-sheet {
+  animation-name: walk-left;
+}
+
+.walk-right .robot-sheet {
+  animation-name: walk-right;
+}
+
+.walk-up .robot-sheet {
+  animation-name: walk-up;
+}
 
 /* ---------- Lab 3: The Stage ---------- */
 .stage {
@@ -81,6 +167,12 @@ body {
 }
 
 /* YOUR CODE: Lab 3, a window on the stage, then walk across */
+
+.stage-window {
+  overflow: hidden;
+  height: 128px;
+  width: 128px;
+}
 
 
 /* YOUR CODE: Be kind to motion (at the very bottom) */
